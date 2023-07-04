@@ -196,7 +196,8 @@ def setup(args):
                 args.replicas, 1
             )
         output_transform = args.external["output_transform"] if "output_transform" in args.external else None
-        external = externalmodule.External(args.external["file"], embeddings, device, output_transform)
+        ipu = "ipu" in args.external
+        external = externalmodule.External(args.external["file"], embeddings, device, output_transform, ipu=ipu)
 
     system = System(mol.numAtoms, args.replicas, precision, device)
     system.set_positions(mol.coords)
