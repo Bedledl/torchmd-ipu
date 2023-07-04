@@ -158,6 +158,7 @@ def setup(args):
     torch.backends.cudnn.allow_tf32 = False
     device = torch.device(args.device)
 
+    batch_comp = False
     if args.topology is not None:
         mol = Molecule(args.topology)
     elif args.structure is not None:
